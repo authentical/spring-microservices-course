@@ -1,0 +1,10 @@
+/.metadata/
+/mobile-app-ws/.mvn
+/mobile-app-ws/.settings
+/mobile-app-ws/target
+/mobile-app-ws/.classpath
+/mobile-app-ws/.project
+/mobile-app-ws/HELP.md
+/mobile-app-ws/mvnw
+/mobile-app-ws/mvnw.cmd
+/mobile-app-ws/.gitignore

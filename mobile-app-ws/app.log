@@ -1,0 +1,7 @@
+2019-10-13 00:06:46,542 INFO com.potatospy.app.ws.MobileAppWsApplication [main] Starting MobileAppWsApplication on soirez with PID 18412 (C:\Users\user\Desktop\eclipse-space\eclipse-microservice-course-space\mobile-app-ws\target\classes started by user in C:\Users\user\Desktop\eclipse-space\eclipse-microservice-course-space\mobile-app-ws)
+2019-10-13 00:06:46,548 INFO com.potatospy.app.ws.MobileAppWsApplication [main] No active profile set, falling back to default profiles: default
+2019-10-13 00:06:47,287 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2019-10-13 00:06:47,302 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-13 00:06:47,375 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2019-10-13 00:06:47,701 INFO com.potatospy.app.ws.MobileAppWsApplication [main] Started MobileAppWsApplication in 1.437 seconds (JVM running for 2.424)
+2019-10-13 00:06:47,996 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'

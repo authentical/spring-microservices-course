@@ -8,3 +8,8 @@
 /mobile-app-ws/mvnw
 /mobile-app-ws/mvnw.cmd
 /mobile-app-ws/.gitignore
+/*.log
+
+*.log
+*.gz
+mobile-app-ws/app.log

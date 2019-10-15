@@ -21,14 +21,19 @@ public class AppExceptionsHandler {
 	public ResponseEntity<Object> handleAnyException(Exception ex, WebRequest request){
 		
 		
+		
 		// Create an error message with timestamp NOW and 
-		// (the localized exception message, OR if that does not exist, the exception to string)
+		// (the localized exception message, OR if that does not exist, the exception tostring)
+		
+		String errorDescription = ex.getLocalizedMessage();
+		if(errorDescription==null) errorDescription = ex.toString();
+		
 		ErrorMessage errorMessage = new ErrorMessage(
 				new Date(), 
-				ex.getLocalizedMessage().equals(null)? ex.toString():ex.getLocalizedMessage()
+				errorDescription
 				);
 		
-		return new  ResponseEntity<>(ex, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+		return new  ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 

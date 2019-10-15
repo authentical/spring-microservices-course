@@ -10,4 +10,3 @@
 /mobile-app-ws/.gitignore
 *.log
 *.gz
-mobile-app-ws/app.log

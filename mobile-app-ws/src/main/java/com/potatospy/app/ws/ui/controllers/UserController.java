@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.potatospy.app.ws.business.service.UserServiceImpl;
+import com.potatospy.app.ws.exceptions.UserServiceException;
 import com.potatospy.app.ws.ui.model.request.UpdateUserDetailsRequestModel;
 import com.potatospy.app.ws.ui.model.request.UserDetailsRequestModel;
 import com.potatospy.app.ws.ui.model.response.UserRest;
@@ -31,6 +34,7 @@ import com.potatospy.app.ws.ui.model.response.UserRest;
 @RequestMapping("users") // local 8080 /users
 public class UserController {
 	
+	
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
     
     @PostConstruct
@@ -39,7 +43,14 @@ public class UserController {
     }
     
     
-    Map<String, UserRest> usersMap = new HashMap<String, UserRest>();
+    
+    
+    @Autowired
+    UserServiceImpl userService;	// Dependency injection
+    
+    Map<String, UserRest> usersMap = new HashMap<String, UserRest>();  //DELETE WHEN READY. STILL IN USE
+    
+    
     
     
 	
@@ -62,6 +73,8 @@ public class UserController {
 	
 	
 	
+	
+	
 	@GetMapping(
 			path = "/{userId}", // url/RequestMapping/PathVariable
 			produces = { MediaType.APPLICATION_JSON_VALUE, 
@@ -72,10 +85,7 @@ public class UserController {
 		log.info("got user " + userId);
 		
 		
-		String firstName = null;
-		//
-		//
-		int firstNameLength = firstName.length();
+
 		
 		
 		if(usersMap.containsKey(userId)) { 
@@ -84,6 +94,8 @@ public class UserController {
 
 		return new ResponseEntity<UserRest>(HttpStatus.NO_CONTENT);
 	}
+	
+	
 	
 	
 	
@@ -102,20 +114,14 @@ public class UserController {
 		
 		log.info("################>" + this.getClass().getMethods().toString() + " needs it's log info set");
 		
-		UserRest returnValue = new UserRest();
-		returnValue.setFirstName(userDetails.getFirstName());
-		returnValue.setLastName(userDetails.getLastName());
-		returnValue.setEmail(userDetails.getEmail());
 		
-		String userId	=	UUID.randomUUID().toString();
-		returnValue.setUserId(userId);
-		
-		if(usersMap==null) usersMap = new HashMap<>();
-		usersMap.put(userId, returnValue);
+		UserRest returnValue = userService.createUser(userDetails);
 		
 		
 		return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
 	}
+	
+	
 	
 	
 	
@@ -152,6 +158,9 @@ public class UserController {
 		
 		return usersMap.get(userId);
 	}
+	
+	
+	
 	
 	
 	@DeleteMapping(

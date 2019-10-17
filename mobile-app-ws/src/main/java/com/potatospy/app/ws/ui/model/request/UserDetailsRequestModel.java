@@ -4,6 +4,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+
+// User Details request object - For registration or login
+
 public class UserDetailsRequestModel {
 	
 	@NotNull(message="firstName null")

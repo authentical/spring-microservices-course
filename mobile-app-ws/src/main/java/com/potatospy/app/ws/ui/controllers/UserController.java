@@ -25,8 +25,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.potatospy.app.ws.business.service.UserServiceImpl;
 import com.potatospy.app.ws.exceptions.UserServiceException;
+import com.potatospy.app.ws.ui.model.request.CalcRequest;
 import com.potatospy.app.ws.ui.model.request.UpdateUserDetailsRequestModel;
 import com.potatospy.app.ws.ui.model.request.UserDetailsRequestModel;
+import com.potatospy.app.ws.ui.model.response.CalcResponse;
 import com.potatospy.app.ws.ui.model.response.UserRest;
 
 
@@ -191,22 +193,5 @@ public class UserController {
 		return  new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

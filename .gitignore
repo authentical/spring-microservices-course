@@ -10,3 +10,10 @@
 /mobile-app-ws/.gitignore
 *.log
 *.gz
+PhotoAppDiscoveryService/mvnw.cmd
+PhotoAppDiscoveryService/mvnw
+PhotoAppDiscoveryService/.mvn/wrapper/MavenWrapperDownloader.java
+PhotoAppDiscoveryService/.mvn/wrapper/maven-wrapper.properties
+PhotoAppDiscoveryService/.mvn/wrapper/maven-wrapper.jar
+PhotoAppDiscoveryService/.mvn/wrapper/maven-wrapper.jar
+PhotoAppDiscoveryService/.mvn/wrapper/maven-wrapper.jar

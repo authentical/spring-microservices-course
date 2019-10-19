@@ -37,6 +37,7 @@ import com.potatospy.app.ws.ui.model.response.UserRest;
 public class UserController {
 	
 	
+	
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
     
     @PostConstruct

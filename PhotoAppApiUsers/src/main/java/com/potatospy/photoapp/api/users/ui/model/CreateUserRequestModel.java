@@ -15,12 +15,12 @@ public class CreateUserRequestModel {
 	@Getter
 	@Setter
 	@NotNull(message="It's null!")
-	@Pattern(regexp="^[0-9]*", message="Alphas only")
+	@Pattern(regexp="[A-Za-z]*", message="Alphas only")
 	private String firstName;
 	@Getter
 	@Setter
 	@NotNull(message="It's null!")
-	@Pattern(regexp="^[0-9]*", message="Alphas only")
+	@Pattern(regexp="[A-Za-z]*", message="Alphas only")
 	private String lastName;
 	@Getter
 	@Setter

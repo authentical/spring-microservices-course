@@ -48,10 +48,12 @@ public class UsersServiceImpl {
 		userEntityToRepository.setEncryptedPassword("JUNK");
 		
 		
-		usersRepository.save(userEntityToRepository);
+		UserEntity savedUserEntity = usersRepository.save(userEntityToRepository);
+		
+		UserDto savedUserDto = modelMapper.map(savedUserEntity, UserDto.class);
 		
 		
-		return null;
+		return savedUserDto;
 	}
 }
 

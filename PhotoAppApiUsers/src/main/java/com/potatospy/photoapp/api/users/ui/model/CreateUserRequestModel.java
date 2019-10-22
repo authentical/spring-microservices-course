@@ -8,6 +8,10 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+
+// Object backing for user creation request
+
+
 public class CreateUserRequestModel {
 	
 	

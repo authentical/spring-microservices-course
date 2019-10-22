@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.potatospy.photoapp.api.users.service.UsersServiceImpl;
 import com.potatospy.photoapp.api.users.shared.UserDto;
 import com.potatospy.photoapp.api.users.ui.model.CreateUserRequestModel;
+import com.potatospy.photoapp.api.users.ui.model.CreateUserResponseModel;
 
 
 
@@ -52,19 +53,24 @@ public class UsersController {
 	// Create-User Requested
 	//
 	@PostMapping
-	public ResponseEntity createUser(@Valid @RequestBody CreateUserRequestModel userDetails) {
+	public ResponseEntity<CreateUserResponseModel> createUser(@Valid @RequestBody CreateUserRequestModel userDetails) {
 		
 
 		
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		
-		UserDto userDto = modelMapper.map(userDetails, UserDto.class);
-		UsersServiceImpl.createUser(userDto);
+		UserDto userDtoToService = modelMapper.map(userDetails, UserDto.class);
+		UserDto createdUser = UsersServiceImpl.createUser(userDtoToService);
 		
 		
 		
-		return new ResponseEntity(HttpStatus.CREATED);
+		CreateUserResponseModel responseBody = modelMapper.map(createdUser, CreateUserResponseModel.class);
+		
+		
+		
+		
+		return new ResponseEntity<CreateUserResponseModel>(responseBody, HttpStatus.CREATED);
 	}
 	
 	

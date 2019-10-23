@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.potatospy.photoapp.api.users.dao.entity.UserEntity;
@@ -16,16 +17,15 @@ import com.potatospy.photoapp.api.users.shared.UserDto;
 public class UsersServiceImpl {
 
 	
-	@Autowired
 	UsersRepository usersRepository;
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
 	
-	
-	
-	public UsersServiceImpl(UsersRepository usersRepository) {
+	public UsersServiceImpl(UsersRepository usersRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
 		
 		this.usersRepository = usersRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 	
 	
@@ -35,17 +35,17 @@ public class UsersServiceImpl {
 	public UserDto createUser(UserDto userDetails) {
 		
 		
-		
+		// Set userId and encryptedPassword
 		userDetails.setUserId(UUID.randomUUID().toString());
+		userDetails.setEncryptedPassword(bCryptPasswordEncoder.encode(userDetails.getPassword()));
 		
 		
-		
+		// Transfer UserDto to UserEntity
 		ModelMapper modelMapper = new ModelMapper();
 		// MatchingStrategies.STRICT : ModelMapper does a lot of magic and if for some reason
 		// it gets confused about member names between classes, it'll blow up. So use STRICT in this example..
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		UserEntity userEntityToRepository = modelMapper.map(userDetails, UserEntity.class);
-		userEntityToRepository.setEncryptedPassword("JUNK");
 		
 		
 		UserEntity savedUserEntity = usersRepository.save(userEntityToRepository);
@@ -55,6 +55,10 @@ public class UsersServiceImpl {
 		
 		return savedUserDto;
 	}
+	
+	
+	
+	
 	
 	
 	

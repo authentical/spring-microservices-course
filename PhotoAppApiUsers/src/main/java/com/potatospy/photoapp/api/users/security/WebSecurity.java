@@ -13,7 +13,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	
 //	private Environment environment;
 //	private UsersService usersService;
-//	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 //	@Autowired
 //	public WebSecurity(Environment environment, UsersService usersService, BCryptPasswordEncoder bCryptPasswordEncoder)

@@ -23,6 +23,6 @@ public class PhotoAppApiUsersApplication {
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		
 		
-		return 
+		return new BCryptPasswordEncoder();
 	}
 }

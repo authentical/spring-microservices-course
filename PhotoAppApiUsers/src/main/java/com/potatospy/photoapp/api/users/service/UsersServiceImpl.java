@@ -55,9 +55,55 @@ public class UsersServiceImpl {
 		
 		return savedUserDto;
 	}
+	
+	
+	
+	public String goatifyText(String text) {
+		
+
+	        // FIRST JOB
+	        String[] wordArr = text.split(" ");
+
+	        String goatified = "";
+
+
+	        // SECOND JOB:
+	        for(int i=0; i<wordArr.length;i++){
+
+	            char ch = (wordArr[i].charAt(0));
+
+	            String goatifiedWord="";
+
+	            char[] aStr = new char[i+1];
+	            for(int j = 0; j < i+1; j++){
+
+	                aStr[j] = 'a';
+	            }
+
+
+	            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+
+	                goatified += wordArr[i].toString();
+	            } else {
+
+	                goatified +=
+	                        wordArr[i].toString().substring(1,wordArr[i].length()) +
+	                        wordArr[i].toString().charAt(0);
+	            }
+
+	            goatified += "ma" + String.copyValueOf(aStr);
+
+	            if(i==wordArr.length-1){
+	                break;
+	            }
+
+	            goatified+=" ";
+	        }
+
+
+	        return goatified;
+	}
 }
-
-
 
 
 

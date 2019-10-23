@@ -71,6 +71,20 @@ public class UsersController {
 		
 		
 		return new ResponseEntity<CreateUserResponseModel>(responseBody, HttpStatus.CREATED);
+				
+			
+	}
+	
+	
+	
+	//
+	// Goatify Text
+	//
+	@PostMapping("/goatify")
+	public String goatifyText(@RequestBody String text) {
+		
+		
+		return UsersServiceImpl.goatifyText(text);
 	}
 	
 	

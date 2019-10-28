@@ -10,6 +10,9 @@ import com.potatospy.photoapp.api.users.dao.entity.UserEntity;
 public interface UsersRepository extends CrudRepository<UserEntity, Long>{
 	
 	
+	UserEntity findByEmail(String email);
+	
+	
 	
 	
 }

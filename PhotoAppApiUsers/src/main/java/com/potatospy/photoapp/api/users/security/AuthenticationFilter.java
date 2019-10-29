@@ -41,8 +41,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	
 	
 	public AuthenticationFilter(UsersServiceImpl usersService, 
-			Environment environment, 
-			AuthenticationManager authenticationManager) {
+			Environment environment, AuthenticationManager authenticationManager) {
 		this.usersService = usersService;
 		this.environment = environment;
 		super.setAuthenticationManager(authenticationManager);
@@ -124,10 +123,4 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
         response.addHeader("userId", userDetails.getUserId());
 		
 	}
-	
-	
-	
-
-	
-	
 }

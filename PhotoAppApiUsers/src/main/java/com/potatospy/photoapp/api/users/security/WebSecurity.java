@@ -11,15 +11,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.potatospy.photoapp.api.users.service.UsersServiceImpl;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 
-
+@Slf4j
 @Configuration
 @EnableWebSecurity
 @Order(SecurityProperties.IGNORED_ORDER)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+	
+	
 	
 	private Environment environment;
 	private UsersServiceImpl usersService;

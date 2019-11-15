@@ -44,10 +44,11 @@ public class UsersController {
 	@GetMapping("/status/check")
 	public String status() {
 		
-		return "Spring application instance working on port: " + env.getProperty("local.server.port") + "\n"
-				+ env.toString();
+		return "Spring application instance working on port: " + env.getProperty("local.server.port") 
+		+ ", with token = " + env.getProperty("token.secret")
+		
+		+ "\n\n\n\n\n\n\n\n" + env.toString();
 	}
-	
 	
 	
 	

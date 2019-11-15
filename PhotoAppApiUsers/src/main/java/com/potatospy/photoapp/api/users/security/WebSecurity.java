@@ -17,7 +17,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 
-@Slf4j
+@Slf4j		// Todo This one... I don't want it to log into a random file...how do I specifyiyyty
 @Configuration
 @EnableWebSecurity
 @Order(SecurityProperties.IGNORED_ORDER)
@@ -46,7 +46,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/**").permitAll()
+		http.authorizeRequests().antMatchers("/**").hasIpAddress(environment.getProperty("gateway.ip"))
 		
 		.and().addFilter(getAuthenticationFilter()); // Register AuthenticationFilter with THIS HTTP security 
 		
